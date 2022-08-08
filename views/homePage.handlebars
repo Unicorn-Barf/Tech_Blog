@@ -1,0 +1,9 @@
+{{#if isLoggedIn}}
+<h1>Welcome logged in user: {{loggedInUser.username}}</h1>
+{{/if}}
+
+<h1>Recent Blog Posts</h1>
+
+{{#each blogs}}
+    {{> blogCard}}
+{{/each}}
