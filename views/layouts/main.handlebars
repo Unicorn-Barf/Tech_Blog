@@ -37,39 +37,67 @@
 
     {{{body}}}
 
-    {{!-- Login/Signup Modal --}}
+    {{!-- Sign In Modal --}}
 
-    <div class="modal modal-lg fade" id="login-modal" aria-hidden="true" aria-labelledby="login-modalLabel" tabindex="-1">
+    <div class="modal modal-lg fade" id="login-modal" aria-hidden="true" aria-labelledby="login-modalLabel"
+        tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="login-modalLabel">Modal 1</h5>
+                    <h5 class="modal-title" id="login-modalLabel">Login</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Show a second modal and hide this one with the button below.
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#signup-modal" data-bs-toggle="modal">Open
-                        second modal</button>
+                    <form>
+                        <div class="mb-3">
+                            <label for="username-input" class="form-label">Username</label>
+                            <input type="email" class="form-control" id="username-input" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password-input" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password-input">
+                        </div>
+                    </form>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button id="signin-btn" type="submit" class="btn btn-primary">Sign In</button>
+                        <button class="btn btn-dark" data-bs-target="#signup-modal" data-bs-toggle="modal">Sign
+                            Up Here</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal modal-lg fade" id="signup-modal" aria-hidden="true" aria-labelledby="signup-modalLabel" tabindex="-1">
+
+    {{!-- Sign Up Modal --}}
+    <div class="modal modal-lg fade" id="signup-modal" aria-hidden="true" aria-labelledby="signup-modalLabel"
+        tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="signup-modalLabel">Modal 2</h5>
+                    <h5 class="modal-title" id="signup-modalLabel">Sign Up</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Hide this modal and show the first with the button below.
+                    <form>
+                        <div class="mb-3">
+                            <label for="username-input" class="form-label">Username</label>
+                            <input type="email" class="form-control" id="username-input">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password-input1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password-input1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password-input-confirm" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="password-input-confirm">
+                        </div>
+                    </form>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button id="signup-btn" type="submit" class="btn btn-primary">Sign Up</button>
+                        <button class="btn btn-dark" data-bs-target="#login-modal" data-bs-toggle="modal">Login</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#login-modal" data-bs-toggle="modal">Back to
-                        first</button>
-                </div>
+
             </div>
         </div>
     </div>
