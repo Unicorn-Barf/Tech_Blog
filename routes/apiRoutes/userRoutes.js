@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { signIn, signUp, signOut } = require('../../controllers');
 
 // /api/user appended to these Routes
 

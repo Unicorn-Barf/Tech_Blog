@@ -10,7 +10,7 @@ const blogsData = [
     },
     {
         id: 'be58d5b7-9cf9-4b8c-b2df-b56f8ecaddcf',
-        name: 'Shaky',
+        title: 'Shaky',
         blog: 'Shaky is the name of my repo for a game based on shaking your phone.',
         userId: '8a923311-dd96-48d4-8817-f9705dfbee0e',
     },

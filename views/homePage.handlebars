@@ -1,9 +1,11 @@
-{{#if isLoggedIn}}
-<h1>Welcome logged in user: {{loggedInUser.username}}</h1>
-{{/if}}
+<div class="container">
+    {{#if isLoggedIn}}
+    <h1>Welcome logged in user: {{loggedInUser.username}}</h1>
+    {{/if}}
 
-<h1>Recent Blog Posts</h1>
+    <h1 class="mt-5">Recent Blog Posts</h1>
 
-{{#each blogs}}
+    {{#each blogPosts as | blog |}}
     {{> blogCard}}
-{{/each}}
+    {{/each}}
+</div>
