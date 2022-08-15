@@ -21,7 +21,7 @@ const signIn = async (req, res) => {
   try {
     const existingUser = await User.findOne({
       where: {
-        email: req.body.email,
+        username: req.body.username,
       },
     });
     if (!existingUser) {
@@ -44,6 +44,7 @@ const signIn = async (req, res) => {
     res.status(500).json({ error });
   }
 };
+
 const signOut = async (req, res) => {
   if (req.session.isLoggedIn) {
     req.session.destroy(() => {

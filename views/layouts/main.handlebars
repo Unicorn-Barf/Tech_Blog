@@ -25,7 +25,7 @@
                     <a class="nav-link" href="/">Home</a>
                     <a class="nav-link" href="/dashboard">Dashboard</a>
                     {{#if isLoggedIn}}
-                    <a class="nav-link" href="/api/signout">Logout</a>
+                    <a id="signout-btn" class="nav-link" href="/">Logout</a>
                     {{else}}
                     <a class="nav-link" data-bs-toggle="modal" data-bs-target="#login-modal">Login</a>
                     {{/if}}
@@ -80,12 +80,12 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="username-input" class="form-label">Username</label>
-                            <input type="email" class="form-control" id="username-input">
+                            <label for="newUser-input" class="form-label">Username</label>
+                            <input type="email" class="form-control" id="newUser-input">
                         </div>
                         <div class="mb-3">
-                            <label for="password-input1" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password-input1">
+                            <label for="newPassword-input" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="newPassword-input">
                         </div>
                         <div class="mb-3">
                             <label for="password-input-confirm" class="form-label">Confirm Password</label>
@@ -106,6 +106,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
+
+    {{!-- jQuery for boostrap modal toggle --}}
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+
+    <script src="/assets/js/userLoginLogout.js"></script>
 </body>
 
 </html>
