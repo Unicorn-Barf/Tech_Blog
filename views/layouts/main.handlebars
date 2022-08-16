@@ -103,16 +103,43 @@
         </div>
     </div>
 
+    {{!-- Boostrap Post Blog Modal --}}
+    <div class="modal modal-lg fade" id="postBlog-modal" aria-hidden="true" aria-labelledby="postBlog-modalLabel"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="postBlog-modalLabel">Post Blog</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="blogTitle-input" class="form-label">Blog Title</label>
+                            <input type="text" class="form-control" id="blogTitle-input">
+                        </div>
+                        <div class="mb-3 d-flex flex-column">
+                            <label for="blogText-input" class="form-label">Blog Text</label>
+                            <textarea name="blogInput" id="blogText-input" cols="60" rows="20"></textarea>
+                        </div>
+                    </form>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button id="post-btn" type="submit" class="btn btn-primary">Post</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <!-- Boostrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
 
     {{!-- jQuery for boostrap modal toggle --}}
-    <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <script src="/assets/js/userLoginLogout.js"></script>
 </body>

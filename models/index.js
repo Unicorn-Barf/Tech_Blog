@@ -29,4 +29,5 @@ Comment.hasOne(User, {
 module.exports = {
   Blog,
   User,
+  Comment,
 };
