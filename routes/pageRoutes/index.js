@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { Blog, User } =require('../../models');
 
+
+// Homepage route
 router.get('/', async (req, res) => {
 
     try {
@@ -26,6 +28,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Route to serve a user's dashboard
 router.get('/dashboard', async (req, res) => {
     if (!req.session.isLoggedIn) {
         return res.redirect('/');
@@ -36,6 +39,7 @@ router.get('/dashboard', async (req, res) => {
     })
 });
 
+// Route to view and comment on a single post
 router.get('/post/:blogId', async (req, res) => {
     if (!req.session.isLoggedIn) {
         return res.redirect('/');
