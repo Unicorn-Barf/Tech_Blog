@@ -33,10 +33,29 @@ router.get('/dashboard', async (req, res) => {
     if (!req.session.isLoggedIn) {
         return res.redirect('/');
     };
-    res.render('dashboard', {
-        isLoggedIn: req.session.isLoggedIn || false,
-        user: req.session.user,
-    })
+
+    try {
+        const userBlogsFromDb = await Blog.findAll({
+            where: {
+                userId: req.session.user.id,
+            },
+            order: [
+                ['createdAt', 'DESC'],
+            ],
+            include: {
+                model: User,
+                attributes: ['username'],
+            },
+        });
+        const blogPosts = userBlogsFromDb.map(blog => blog.get({plain: true}));
+        res.render('dashboard', {
+            isLoggedIn: req.session.isLoggedIn || false,
+            user: req.session.user,
+            blogPosts,
+        });
+    } catch (error) {
+        res.status(500).json(error);
+    }
 });
 
 // Route to view and comment on a single post

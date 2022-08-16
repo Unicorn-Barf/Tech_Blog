@@ -1,5 +1,15 @@
-<h1>Welcome {{user.username}}</h1>
+<div class="container">
+    <div class="container rounded bg-secondary mt-5">
 
-{{#each blogPosts as | blog |}}
-{{> blogCard}}
-{{/each}}
+        <h1 class="p-3">Welcome {{user.username}}</h1>
+        <button class="p-2 m-3 btn btn-dark" data-bs-target="#postBlog-modal" data-bs-toggle="modal">Post Blog</button>
+
+    </div>
+
+    <div class="mt-5">
+        {{#each blogPosts as | blog |}}
+        {{> blogCard}}
+        {{/each}}
+    </div>
+
+</div>
