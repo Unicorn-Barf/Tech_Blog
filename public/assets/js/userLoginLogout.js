@@ -82,7 +82,7 @@ signupBtn?.addEventListener('click', async (event) => {
 
         await response.json();
         if (response.ok) {
-            $('#signup-modal').modal('hide');
+            window.location.href = '/';
         };
 
     } catch (error) {

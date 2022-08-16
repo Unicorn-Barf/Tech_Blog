@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>Get Involved in the Conversation!</h1>
+
+    {{#with blogPost}}
+    {{> blogCard}}
+    {{/with}}
+
+    <div class="card" style="width: 18rem;">
+        {{#each comments as | comment |}}
+        {{> comments}}
+        {{/each}}
+    </div>
+</div>
