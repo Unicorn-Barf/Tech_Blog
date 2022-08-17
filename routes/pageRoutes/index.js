@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blog, User } =require('../../models');
+const { Blog, User, Comment } = require('../../models');
 
 
 // Homepage route
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
             }
         });
 
-        const blogPosts = blogPostsFromDb.map(post => post.get({plain:true}));
+        const blogPosts = blogPostsFromDb.map(post => post.get({ plain: true }));
         res.render('homePage', {
             isLoggedIn: req.session.isLoggedIn || false,
             blogPosts,
@@ -47,7 +47,7 @@ router.get('/dashboard', async (req, res) => {
                 attributes: ['username'],
             },
         });
-        const blogPosts = userBlogsFromDb.map(blog => blog.get({plain: true}));
+        const blogPosts = userBlogsFromDb.map(blog => blog.get({ plain: true }));
         res.render('dashboard', {
             isLoggedIn: req.session.isLoggedIn || false,
             user: req.session.user,
@@ -64,16 +64,30 @@ router.get('/post/:blogId', async (req, res) => {
         return res.redirect('/');
     };
     try {
+        // get the current blog and comments
         const blogFromDb = await Blog.findOne({
             where: {
                 id: req.params.blogId,
             },
-            include: {
-                model: User,
-                attributes: ['username'],
-            },
+            include: [
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+                {
+                    model: Comment,
+                    separate: true,
+                    order: [
+                        ['createdAt', 'DESC'],
+                    ],
+                    include: [{
+                        model: User,
+                        attributes: ['username'],
+                    }]
+                },
+            ]
         });
-        const blogPost = blogFromDb.get({plain:true});
+        const blogPost = blogFromDb.get({ plain: true });
         console.log(blogPost);
         res.render('blog', {
             isLoggedIn: req.session.isLoggedIn || false,

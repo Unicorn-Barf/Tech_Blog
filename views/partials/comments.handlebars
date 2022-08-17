@@ -21,14 +21,14 @@
 {{/if}}
 
 {{!-- Cards for Comments --}}
-{{#each comments as | comment |}}
-<div class="card">
+{{#each blogPost.comments as | data |}}
+<div class="card my-2">
     <div class="card-header">
         <h5 class="card-title">{{user.username}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Posted by {{user.username}} on {{toDate createdAt}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">Posted on {{toDate createdAt}}</h6>
     </div>
     <div class="card-body">
-        <p class="card-text">{{comment}}</p>
+        <p class="card-text">{{data.comment}}</p>
     </div>
 </div>
 {{/each}}
