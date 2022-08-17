@@ -33,7 +33,7 @@ signinBtn?.addEventListener('click', async (event) => {
 
         await response.json();
         if (response.ok) {
-            window.location.href = '/';
+            window.location.reload();
         };
 
     } catch (error) {
@@ -82,7 +82,7 @@ signupBtn?.addEventListener('click', async (event) => {
 
         await response.json();
         if (response.ok) {
-            window.location.href = '/';
+            window.location.reload();
         };
 
     } catch (error) {

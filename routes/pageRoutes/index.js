@@ -60,9 +60,6 @@ router.get('/dashboard', async (req, res) => {
 
 // Route to view and comment on a single post
 router.get('/post/:blogId', async (req, res) => {
-    if (!req.session.isLoggedIn) {
-        return res.redirect('/');
-    };
     try {
         // get the current blog and comments
         const blogFromDb = await Blog.findOne({
@@ -89,8 +86,10 @@ router.get('/post/:blogId', async (req, res) => {
         });
         const blogPost = blogFromDb.get({ plain: true });
         console.log(blogPost);
-        // create boolean if user is viewing their post
-        req.session.user.id === blogPost.userId ? blogPost.edit = true : blogPost.edit = false;
+        // create boolean if user is viewing their post & logged in
+        if (req.session.isLoggedIn) {
+            req.session.user.id === blogPost.userId ? blogPost.edit = true : blogPost.edit = false;
+        };
         res.render('blog', {
             isLoggedIn: req.session.isLoggedIn || false,
             blogPost,
