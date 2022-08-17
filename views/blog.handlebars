@@ -10,4 +10,35 @@
 
 </div>
 
+{{!-- Bootstrap modal for editing post --}}
+<div class="modal modal-lg fade" id="editBlog-modal" aria-hidden="true" aria-labelledby="editBlog-modalLabel"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editBlog-modalLabel">Edit Blog</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="blogTitle-input" class="form-label">Blog Title</label>
+                            <input type="text" class="form-control" id="blogTitle-input">
+                        </div>
+                        <div class="mb-3 d-flex flex-column">
+                            <label for="blogText-input" class="form-label">Blog Text</label>
+                            <textarea name="blogInput" id="blogText-input" cols="60" rows="20"></textarea>
+                        </div>
+                    </form>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button id="save-btn" type="submit" class="btn btn-primary">Save</button>
+                        <button id="delete-btn" type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<script src="/assets/js/editPost.js"></script>
 <script src="/assets/js/comment.js"></script>

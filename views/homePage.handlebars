@@ -13,6 +13,8 @@
     <h3 class="mt-5">Recent Blog Posts</h3>
 
     {{#each blogPosts as | blog |}}
-    {{> blogCard}}
+    <a class="cardLink" href="/post/{{id}}">
+        {{> blogCard}}
+    </a>
     {{/each}}
 </div>

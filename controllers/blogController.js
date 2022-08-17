@@ -15,6 +15,38 @@ const postBlog = async (req, res) => {
     }
 }
 
+const updateBlog = async (req, res) => {
+    try {
+        const id = req.params.blogId;
+        const response = await Blog.update(req.body, {
+            where: {
+                id,
+            },
+        });
+        res.status(200).json(response);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error});
+    }
+};
+
+const deleteBlog = async (req, res) => {
+    try {
+        const id = req.params.blogId;
+        const response = await Blog.destroy({
+            where: {
+                id,
+            },
+        });
+        res.status(200).json(response);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error});
+    }
+};
+
 module.exports = {
     postBlog,
+    updateBlog,
+    deleteBlog
   };

@@ -8,7 +8,9 @@
 
     <div class="mt-5">
         {{#each blogPosts as | blog |}}
-        {{> blogCard}}
+        <a class="cardLink" href="/post/{{id}}">
+            {{> blogCard}}
+        </a>
         {{/each}}
     </div>
 

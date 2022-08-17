@@ -44,7 +44,7 @@ router.get('/dashboard', async (req, res) => {
             ],
             include: {
                 model: User,
-                attributes: ['username'],
+                attributes: ['username', 'id'],
             },
         });
         const blogPosts = userBlogsFromDb.map(blog => blog.get({ plain: true }));
@@ -72,7 +72,7 @@ router.get('/post/:blogId', async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['username'],
+                    attributes: ['username', 'id'],
                 },
                 {
                     model: Comment,
@@ -89,6 +89,8 @@ router.get('/post/:blogId', async (req, res) => {
         });
         const blogPost = blogFromDb.get({ plain: true });
         console.log(blogPost);
+        // create boolean if user is viewing their post
+        req.session.user.id === blogPost.userId ? blogPost.edit = true : blogPost.edit = false;
         res.render('blog', {
             isLoggedIn: req.session.isLoggedIn || false,
             blogPost,
