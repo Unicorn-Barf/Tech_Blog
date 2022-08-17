@@ -1,4 +1,4 @@
-const { User, Blog, Comment } = require("../models");
+const { Comment } = require("../models");
 
 const postComment = async (req, res) => {
     try {
@@ -14,6 +14,38 @@ const postComment = async (req, res) => {
     }
 };
 
+const updateComment = async (req, res) => {
+    try {
+        const id = req.params.commentId;
+        const response = await Comment.update(req.body, {
+            where: {
+                id,
+            },
+        });
+        res.status(200).json(response);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error});
+    }
+};
+
+const deleteComment = async (req, res) => {
+    try {
+        const id = req.params.commentId;
+        const response = await Comment.destroy({
+            where: {
+                id,
+            },
+        });
+        res.status(200).json(response);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error});
+    }
+};
+
 module.exports = {
     postComment,
+    updateComment,
+    deleteComment,
   };

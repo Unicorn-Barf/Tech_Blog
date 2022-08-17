@@ -1,14 +1,14 @@
 const router = require('express').Router();
-const { userControllers } = require('../../controllers');
+const { signIn, signUp, signOut } = require('../../controllers/userController');
 
 // /api/user appended to these Routes
 
 // User sign in route
-router.post('/signin', userControllers.signIn);
+router.post('/signin', signIn);
 // User sign up route
-router.post('/signup', userControllers.signUp);
+router.post('/signup', signUp);
 // Destroys the session when a user signs out.
-router.get('/signout', userControllers.signOut);
+router.get('/signout', signOut);
 
 
 module.exports = router;

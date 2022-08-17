@@ -5,18 +5,20 @@ const saveBtn = document.getElementById('save-btn');
 const deleteBtn = document.getElementById('delete-btn');
 
 // Current blog HTML elements
+let id;
+const editBtn = document.getElementById('edit-btn');
 const currentTitle = document.getElementById('currentTitle').textContent;
 const currentText = document.getElementById('currentText').textContent;
-const id = document.getElementById('edit-btn').dataset.blogid;
+if (editBtn) id = editBtn.dataset.blogid;
 
 // Set Edit Modal's text to reflect current Blog text
 modalTitleInputEl.value = currentTitle;
-modalTextInputEl.textContent = currentText;
+modalTextInputEl.value = currentText;
 
 saveBtn.addEventListener('click', async (event) => {
     event.preventDefault();
     const title = modalTitleInputEl.value;
-    const blog = modalTextInputEl.textContent;
+    const blog = modalTextInputEl.value;
 
     try {
         const response = await fetch(`/api/blog/${id}`, {

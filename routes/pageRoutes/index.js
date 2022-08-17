@@ -4,7 +4,8 @@ const { Blog, User, Comment } = require('../../models');
 
 // Homepage route
 router.get('/', async (req, res) => {
-
+    // Get all blog posts in Newest to Oldest order
+    // Render the page with these posts
     try {
         const blogPostsFromDb = await Blog.findAll({
             order: [
@@ -33,7 +34,7 @@ router.get('/dashboard', async (req, res) => {
     if (!req.session.isLoggedIn) {
         return res.redirect('/');
     };
-
+    // Get all Logged in User's posts in ordered from newest to oldest
     try {
         const userBlogsFromDb = await Blog.findAll({
             where: {
@@ -61,7 +62,7 @@ router.get('/dashboard', async (req, res) => {
 // Route to view and comment on a single post
 router.get('/post/:blogId', async (req, res) => {
     try {
-        // get the current blog and comments
+        // get the current blog and associated comments
         const blogFromDb = await Blog.findOne({
             where: {
                 id: req.params.blogId,
@@ -85,11 +86,18 @@ router.get('/post/:blogId', async (req, res) => {
             ]
         });
         const blogPost = blogFromDb.get({ plain: true });
-        console.log(blogPost);
-        // create boolean if user is viewing their post & logged in
+        
         if (req.session.isLoggedIn) {
+            // create boolean if user is viewing their post
             req.session.user.id === blogPost.userId ? blogPost.edit = true : blogPost.edit = false;
+
+            // create a boolean in each comment for editing comments permission
+            blogPost.comments.forEach(comment => {
+                if (comment.userId === req.session.user.id) return comment.commentEdit = true;
+                else return comment.commentEdit = false;
+            });
         };
+
         res.render('blog', {
             isLoggedIn: req.session.isLoggedIn || false,
             blogPost,

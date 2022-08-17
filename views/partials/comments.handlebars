@@ -14,20 +14,20 @@
     </div>
     <div class="card-footer">
         <div class="modal-footer d-flex justify-content-between">
-            <button id="comment-btn" data-blogid="{{blogPost.id}}" type="submit" class="btn btn-primary">Comment</button>
+            <button id="comment-btn" data-blogid="{{blogPost.id}}" type="submit" class="btn btn-dark">Comment</button>
         </div>
     </div>
 </div>
 {{else}}
 <div class="card">
-  <div class="card-header">
-    Login or Signup to Participate
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">You're missing out!</h5>
-    <p class="card-text">Click the button below to login or sign up today.</p>
-    <a href="#" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#login-modal">Let's go!</a>
-  </div>
+    <div class="card-header">
+        Login or Signup to Participate
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">You're missing out!</h5>
+        <p class="card-text">Click the button below to login or sign up today.</p>
+        <a href="#" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#login-modal">Let's go!</a>
+    </div>
 </div>
 {{/if}}
 
@@ -41,5 +41,11 @@
     <div class="card-body">
         <p class="card-text">{{data.comment}}</p>
     </div>
+    {{#if data.commentEdit}}
+    <div class="card-footer">
+        <button data-commentid="{{data.id}}" type="button" class="editComment-btn btn btn-danger" data-bs-target="#editComment-modal"
+            data-bs-toggle="modal">Edit</button>
+    </div>
+    {{/if}}
 </div>
 {{/each}}
