@@ -83,7 +83,7 @@ THEN I am able to view comments but I am prompted to log in again before I can a
 ## My process
 ​
 ### Built with
-​
+
 - JavaScript
 - NodeJS
 - NPM express-handlebars
