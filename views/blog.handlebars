@@ -1,13 +1,12 @@
-<div class="container">
-    <h1>Get Involved in the Conversation!</h1>
-
+<div class="container rounded bg-secondary mt-5 p-2">
     {{#with blogPost}}
     {{> blogCard}}
     {{/with}}
+</div>
 
-
+<div class="container rounded bg-secondary mt-5 p-4">
+    <h1 class="mb-3">Get Involved in the Conversation!</h1>
     {{> comments}}
-
 </div>
 
 {{!-- Bootstrap modal for editing post --}}
